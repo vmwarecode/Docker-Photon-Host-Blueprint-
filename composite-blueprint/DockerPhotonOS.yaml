@@ -1,0 +1,133 @@
+id: DockerPhotonOS
+name: Docker Host- PhotonOS
+description: Sample template for provisioning Docker hosts for vSphere
+status: PUBLISHED
+components:
+  Docker_Host_1:
+    type: Software.DockerHost
+    data:
+      host:
+        fixed: ${_resource~vSphere_Machine_1}
+  External:
+    type: Infrastructure.Network.Network.Existing
+    data:
+      name:
+        fixed: External
+      network_profile:
+        fixed: External
+  vSphere_Machine_1:
+    type: Infrastructure.CatalogItem.Machine.Virtual.vSphere
+    data:
+      Container:
+        fixed: Container.Docker
+        required: false
+        secured: false
+        visible: false
+      Container.Auth.Password:
+        fixed: ''
+        required: false
+        secured: true
+        visible: false
+      Container.Auth.PrivateKey:
+        fixed: ''
+        required: false
+        secured: true
+        visible: false
+      Container.Auth.PublicKey:
+        fixed: ''
+        required: false
+        secured: false
+        visible: false
+      Container.Auth.User:
+        fixed: ''
+        required: false
+        secured: false
+        visible: false
+      Container.Connection.Port:
+        fixed: '2376'
+        required: false
+        secured: false
+        visible: false
+      Container.Connection.Protocol:
+        fixed: API
+        required: false
+        secured: false
+        visible: false
+      Container.Connection.Scheme:
+        fixed: https
+        required: false
+        secured: false
+        visible: false
+      VirtualMachine.Admin.ThinProvision:
+        default: 'True'
+        required: false
+        secured: false
+        visible: false
+      _cluster:
+        default: 1
+        max: 1
+        min: 1
+      action:
+        fixed: LinkedClone
+      allow_storage_policies:
+        fixed: false
+      blueprint_type:
+        fixed: '1'
+      cpu:
+        default: 1
+        max: 2
+        min: 1
+      disks:
+      - capacity: 16
+        custom_properties: null
+        id: 1477623404745
+        initial_location: ''
+        is_clone: true
+        label: Hard disk 1
+        storage_reservation_policy: ''
+        userCreated: false
+        volumeId: 0
+      display_location:
+        fixed: false
+      guest_customization_specification: Photon_1.0
+      max_network_adapters: {}
+      max_volumes: {}
+      memory:
+        default: 512
+        max: 1024
+        min: 512
+      nics:
+      - address: ''
+        assignment_type: Static
+        id: 0
+        load_balancing: ''
+        network: ${_resource~External}
+        network_profile: External
+      provisioning_workflow:
+        fixed:
+          id: CloneWorkflow
+          label: CloneWorkflow
+      reservation_policy:
+        id: Cloud CL Reservation Policy
+        label: Cloud CL Reservation Policy
+      security_groups: []
+      security_tags: []
+      source_machine:
+        fixed:
+          id: 97773538-63bb-42d1-805d-ff80f46a8ea7
+          label: Photon_1.0
+      source_machine_external_snapshot:
+        fixed: 17
+      source_machine_name:
+        fixed: Photon_1.0
+      source_machine_vmsnapshot:
+        fixed:
+          id: '7'
+      storage:
+        default: 16
+        max: 20
+        min: 16
+layout:
+  Docker_Host_1: 0,0
+  External: 1,0
+  vSphere_Machine_1: 0,0

@@ -1,0 +1,11 @@
+name: "auto-generated-pkg-aefd894a-5a1d-4167-9576-5e86edf20f9b"
+productVersion: "7.1.0-SNAPSHOT"
+data:
+- locator: "composite-blueprint/DockerPhotonOS.yaml"
+  name: "Docker Host- PhotonOS"
+  description: "Docker Host- PhotonOS"
+  dependencies:
+  - "software-component/Software.DockerHost.yaml"
+- locator: "software-component/Software.DockerHost.yaml"
+  name: "Docker Host"
+exportTime: "2016-10-29T03:56:47.067Z"
